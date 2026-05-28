@@ -1,0 +1,17 @@
+# Local tooling
+.claude/
+.playwright-mcp/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Editor
+.vscode/
+.idea/
+*.swp
+*~
+
+# Node (in case anything gets added later)
+node_modules/
+npm-debug.log*
