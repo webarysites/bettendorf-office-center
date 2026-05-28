@@ -6,7 +6,8 @@
 <title>Office Center at Iowa Towers — Bettendorf, IA · Managed by Avalair Group</title>
 <meta name="description" content="Desk rentals and Iowa virtual offices at 2550 Middle Road, Bettendorf, IA. Furnished workspace and real Iowa business addresses inside Iowa Towers — on-site parking, professional setting, simple terms. Managed by Avalair Group." />
 <meta name="theme-color" content="#1B1814" />
-<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%231B1814'/%3E%3Cpath d='M9 22V10h3l4 8V10h3v12h-3l-4-8v8H9z' fill='%23FE9D1B'/%3E%3C/svg%3E" />
+<link rel="icon" type="image/svg+xml" href="resources/avalair.svg" />
+<link rel="apple-touch-icon" href="resources/avalair.svg" />
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -119,11 +120,11 @@
   }
   header.site .brand .b-text strong{ color:#fff; font-weight:500 }
   header.site nav{
-    display:flex; justify-content:center; gap: clamp(18px, 2.4vw, 38px);
-    font-family:var(--mono); font-size:11px; letter-spacing:.18em; text-transform:uppercase;
+    display:flex; justify-content:center; gap: clamp(20px, 2.6vw, 40px);
+    font-family:var(--mono); font-size:13px; letter-spacing:.14em; text-transform:uppercase;
   }
   header.site nav a{
-    color:rgba(242,235,219,.78);
+    color:rgba(242,235,219,.92);
     padding: 8px 0;
     position:relative;
     transition:color .2s ease;
@@ -188,8 +189,8 @@
   .hero::before{
     content:""; position:absolute; inset:0; z-index:-1;
     background:
-      linear-gradient(180deg, rgba(15,12,9,.78) 0%, rgba(15,12,9,.32) 28%, rgba(15,12,9,.18) 55%, rgba(15,12,9,.82) 100%),
-      linear-gradient(90deg, rgba(15,12,9,.55) 0%, rgba(15,12,9,0) 60%);
+      linear-gradient(180deg, rgba(15,12,9,.85) 0%, rgba(15,12,9,.6) 30%, rgba(15,12,9,.55) 60%, rgba(15,12,9,.88) 100%),
+      linear-gradient(90deg, rgba(15,12,9,.7) 0%, rgba(15,12,9,.15) 65%, rgba(15,12,9,0) 100%);
   }
 
   .hero .body{
@@ -203,10 +204,10 @@
     font-family:var(--display);
     font-variation-settings:"opsz" 144, "SOFT" 40, "wght" 280;
     color: var(--bone);
-    font-size: clamp(46px, 8.4vw, 132px);
-    line-height: .92;
+    font-size: clamp(44px, 7.6vw, 120px);
+    line-height: .94;
     letter-spacing:-0.028em;
-    max-width: 16ch;
+    max-width: 22ch;
   }
   .hero h1 .line{ display:block }
   .hero h1 em{
@@ -495,10 +496,11 @@
   }
   .card ul.feat li{
     border-bottom:1px solid rgba(242,235,219,.14);
-    padding: 14px 0;
+    padding: 16px 0;
     display:grid; grid-template-columns: 22px 1fr; gap: 14px; align-items:start;
-    font-family:var(--mono); font-size:11.5px; letter-spacing:.08em; text-transform:uppercase;
-    color: rgba(242,235,219,.85);
+    font-family:var(--mono); font-size:12.5px; letter-spacing:.06em; text-transform:uppercase;
+    line-height: 1.5;
+    color: rgba(242,235,219,.9);
   }
   .card ul.feat li svg{ width:14px; height:14px; color: var(--orange); margin-top:1px }
   .card .foot{
@@ -903,6 +905,20 @@
     .hero .stamp > span:nth-child(3){ text-align:left }
     .hero .stamp > span:nth-child(2){ display:none }
     .spaces .cards{ grid-template-columns: 1fr }
+    /* gallery: collapse asymmetric mosaic to clean full-width stack */
+    .gallery .mosaic{
+      grid-auto-rows: auto;
+      gap: 12px;
+    }
+    .gallery .tile{ grid-row: auto; grid-column: 1 / -1; aspect-ratio: 16 / 10 }
+    .gallery .t2{ aspect-ratio: 4 / 3 }
+    /* captions always visible on mobile (no hover) */
+    .gallery .tile .cap{ opacity: 1; transform: none }
+    .gallery .tile::after{
+      content:""; position:absolute; left:0; right:0; bottom:0; height: 45%;
+      background: linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(0,0,0,.7) 100%);
+      pointer-events:none;
+    }
     .about .stats{ grid-template-columns: 1fr 1fr }
     .about .stats .s:last-child{ grid-column: 1 / -1 }
     .contact .contact-strip{ grid-template-columns: 1fr; gap: 22px }
@@ -962,8 +978,8 @@
         </div>
         <h1>
           <span class="line">Desk rentals</span>
-          <span class="line">&amp; Iowa virtual</span>
-          <span class="line">offices in <em>Bettendorf.</em></span>
+          <span class="line">&amp; Iowa virtual offices</span>
+          <span class="line">in <em>Bettendorf.</em></span>
         </h1>
       </div>
       <div class="lead-row">
@@ -974,7 +990,7 @@
         </p>
         <div class="cta-row">
           <a class="btn primary" href="#contact">
-            <span>Get in Touch</span>
+            <span>Schedule a Tour</span>
             <span class="arr" aria-hidden="true">
               <svg viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M1 5h8M5.5 1.5 9 5l-3.5 3.5"/></svg>
             </span>
