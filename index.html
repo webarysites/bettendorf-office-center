@@ -248,6 +248,33 @@
     color: var(--orange); font-weight:inherit;
   }
 
+  /* keep hero content clear of the fixed header when the hero is tall (phones) */
+  .hero > .wrap{ padding-top: clamp(84px, 11vh, 110px) }
+
+  /* hero "second location" announcement pill */
+  .hero .soon-pill{
+    align-self:flex-start;
+    display:inline-flex; align-items:center; gap:12px;
+    margin-bottom: 6px;
+    padding: 9px 16px 9px 14px;
+    border:1px solid rgba(254,157,27,.5);
+    border-radius:999px;
+    background: rgba(27,24,20,.38);
+    backdrop-filter: blur(6px);
+    font-family:var(--mono); font-size:10.5px; letter-spacing:.2em; text-transform:uppercase;
+    color: var(--bone);
+    transition: background .25s ease, border-color .25s ease;
+  }
+  .hero .soon-pill:hover{ background: rgba(27,24,20,.62); border-color: var(--orange) }
+  .hero .soon-pill em{ font-style:normal; color: var(--orange) }
+  .hero .soon-pill svg{ width:10px; height:10px; color: var(--orange); flex: 0 0 auto }
+  .soon-pill .pulse, .next-loc .pulse{
+    width:8px; height:8px; border-radius:50%; background: var(--orange);
+    box-shadow: 0 0 0 0 rgba(254,157,27,.6);
+    animation: pulse 2.2s infinite;
+    flex: 0 0 auto;
+  }
+
   /* hero bottom info strip — building data plate */
   .hero .stamp{
     margin-top: clamp(28px, 4vh, 44px);
@@ -646,6 +673,45 @@
   }
   .location .map-card .below strong{ color: var(--ink); font-weight:500 }
 
+  /* second location — coming soon panel */
+  .next-loc{
+    margin-top: clamp(56px, 8vh, 96px);
+    background: var(--ink);
+    color: var(--bone);
+    padding: clamp(28px, 4vw, 52px);
+    display:grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    gap: clamp(24px, 4vw, 56px);
+    align-items:end;
+    border-top: 3px solid var(--orange);
+    scroll-margin-top: 96px;
+  }
+  .next-loc .nl-tag{
+    display:inline-flex; align-items:center; gap:12px;
+    font-family:var(--mono); font-size:11px; letter-spacing:.22em; text-transform:uppercase;
+    color: var(--orange);
+  }
+  .next-loc h3{
+    margin: 18px 0 14px;
+    font-family:var(--display);
+    font-variation-settings:"opsz" 144, "SOFT" 50, "wght" 280;
+    font-size: clamp(32px, 4.2vw, 60px);
+    line-height: 1;
+    letter-spacing:-0.025em;
+    color: var(--bone);
+  }
+  .next-loc h3 em{
+    font-style:italic; color: var(--orange);
+    font-variation-settings:"opsz" 144, "SOFT" 80, "wght" 260;
+  }
+  .next-loc p{
+    margin:0;
+    max-width: 58ch;
+    color: rgba(242,235,219,.74);
+    font-size: clamp(15px, 1.1vw, 17px);
+    line-height: 1.6;
+  }
+
   .nearby{
     margin-top: clamp(48px, 7vh, 76px);
     border-top:1px solid var(--rule-strong);
@@ -863,6 +929,10 @@
     opacity:0; transform: translateY(20px);
     animation: rise .9s cubic-bezier(.2,.7,.2,1) forwards;
   }
+  .hero .soon-pill{
+    opacity:0; transform: translateY(20px);
+    animation: rise .9s cubic-bezier(.2,.7,.2,1) forwards;
+  }
   .hero .eyebrow{ animation-delay: .05s }
   .hero .lead-row{ animation-delay: .55s }
   /* keep h1 lines animating independently (don't inherit opacity from title-group) */
@@ -930,6 +1000,8 @@
     .sec-head .line{ display:none }
     .sec-head .meta{ text-align:left }
     .location .addr-block .addr{ font-size: clamp(56px, 18vw, 96px) }
+    .hero .soon-pill{ font-size: 9.5px; gap: 10px; padding: 8px 14px 8px 12px }
+    .next-loc{ grid-template-columns: 1fr; align-items:start }
   }
   @media (max-width: 420px){
     .pill-call span:not(.icon){ display:none }
@@ -939,6 +1011,7 @@
   @media (prefers-reduced-motion: reduce){
     *,*::before,*::after{ animation: none !important; transition: none !important }
     .reveal{ opacity:1; transform: none }
+    .hero .soon-pill{ opacity:1; transform: none }
   }
 </style>
 </head>
@@ -973,6 +1046,11 @@
   <div class="wrap" style="position:relative; z-index:2; display:flex; flex-direction:column; min-height:100svh; padding-bottom: clamp(28px, 4vh, 56px);">
     <div class="body" style="margin-top:auto">
       <div class="title-group">
+        <a class="soon-pill" href="#next-location">
+          <span class="pulse" aria-hidden="true"></span>
+          <span>Second location <em>coming soon</em></span>
+          <svg viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M5 1v8M1.5 5.5 5 9l3.5-3.5"/></svg>
+        </a>
         <div class="eyebrow">
           A property by <strong>Avalair Group</strong>
         </div>
@@ -1319,6 +1397,22 @@
           <span><strong>Bettendorf, Iowa</strong></span>
         </div>
       </aside>
+    </div>
+
+    <div class="next-loc reveal" id="next-location">
+      <div class="nl-body">
+        <span class="nl-tag"><span class="pulse" aria-hidden="true"></span>Coming soon</span>
+        <h3>A <em>second</em> location is on the way.</h3>
+        <p>
+          We're opening a second Office Center location. The address, spaces,
+          and opening date will be announced here soon. Want to hear first?
+          Send us a note and we'll keep you posted.
+        </p>
+      </div>
+      <a class="btn primary" href="mailto:dennis@avalairgroup.com?subject=Second%20location%20-%20please%20keep%20me%20posted">
+        <span>Get notified</span>
+        <span class="arr" aria-hidden="true"><svg viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M1 5h8M5.5 1.5 9 5l-3.5 3.5"/></svg></span>
+      </a>
     </div>
   </div>
 </section>
