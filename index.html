@@ -252,10 +252,9 @@
   .hero > .wrap{ padding-top: clamp(84px, 11vh, 110px) }
 
   /* hero "second location" announcement pill */
+  .hero .lead-col{ display:flex; flex-direction:column; align-items:flex-start; gap: 22px }
   .hero .soon-pill{
-    align-self:flex-start;
     display:inline-flex; align-items:center; gap:12px;
-    margin-bottom: 6px;
     padding: 9px 16px 9px 14px;
     border:1px solid rgba(254,157,27,.5);
     border-radius:999px;
@@ -929,10 +928,6 @@
     opacity:0; transform: translateY(20px);
     animation: rise .9s cubic-bezier(.2,.7,.2,1) forwards;
   }
-  .hero .soon-pill{
-    opacity:0; transform: translateY(20px);
-    animation: rise .9s cubic-bezier(.2,.7,.2,1) forwards;
-  }
   .hero .eyebrow{ animation-delay: .05s }
   .hero .lead-row{ animation-delay: .55s }
   /* keep h1 lines animating independently (don't inherit opacity from title-group) */
@@ -1011,7 +1006,7 @@
   @media (prefers-reduced-motion: reduce){
     *,*::before,*::after{ animation: none !important; transition: none !important }
     .reveal{ opacity:1; transform: none }
-    .hero .soon-pill{ opacity:1; transform: none }
+    .hero h1 .line, .hero .eyebrow, .hero .lead-row{ opacity:1; transform: none }
   }
 </style>
 </head>
@@ -1046,11 +1041,6 @@
   <div class="wrap" style="position:relative; z-index:2; display:flex; flex-direction:column; min-height:100svh; padding-bottom: clamp(28px, 4vh, 56px);">
     <div class="body" style="margin-top:auto">
       <div class="title-group">
-        <a class="soon-pill" href="#next-location">
-          <span class="pulse" aria-hidden="true"></span>
-          <span>Second location <em>coming soon</em></span>
-          <svg viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M5 1v8M1.5 5.5 5 9l3.5-3.5"/></svg>
-        </a>
         <div class="eyebrow">
           A property by <strong>Avalair Group</strong>
         </div>
@@ -1061,11 +1051,18 @@
         </h1>
       </div>
       <div class="lead-row">
-        <p class="lead">
-          Furnished workspace and Iowa business addresses inside Iowa Towers at
-          2550 Middle Road — with on-site parking, a professional tenant mix,
-          and simple, flexible terms.
-        </p>
+        <div class="lead-col">
+          <p class="lead">
+            Furnished workspace and Iowa business addresses inside Iowa Towers at
+            2550 Middle Road — with on-site parking, a professional tenant mix,
+            and simple, flexible terms.
+          </p>
+          <a class="soon-pill" href="#next-location">
+            <span class="pulse" aria-hidden="true"></span>
+            <span>Second location <em>coming soon</em></span>
+            <svg viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M5 1v8M1.5 5.5 5 9l3.5-3.5"/></svg>
+          </a>
+        </div>
         <div class="cta-row">
           <a class="btn primary" href="#contact">
             <span>Schedule a Tour</span>
